@@ -1,0 +1,33 @@
+name: Deploy to EC2 using Docker Compose
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Checkout code dari GitHub
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up SSH untuk terhubung ke EC2
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      # Install Docker dan Docker Compose di GitHub Actions Runner
+      - name: Set up Docker
+        uses: docker/setup-docker@v2
+
+      # Jalankan Docker Compose di EC2 melalui SSH
+      - name: Deploy to EC2 using Docker Compose
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.27.186.65 << 'EOF'
+            cd /home/ubuntu/githubaction-python
+            docker compose -f up -d
+          EOF
