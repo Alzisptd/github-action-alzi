@@ -14,11 +14,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up SSH untuk terhubung ke EC2
+      # Set up SSH key (dari GitHub Secrets)
       - name: Set up SSH key
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 3.27.186.65 >> ~/.ssh/known_hosts
+        env:
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
       # Jalankan Docker Compose di EC2 melalui SSH
       - name: Deploy to EC2 using Docker Compose
