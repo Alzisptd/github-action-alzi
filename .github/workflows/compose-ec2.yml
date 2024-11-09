@@ -20,10 +20,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-      # Install Docker dan Docker Compose di GitHub Actions Runner
-      - name: Set up Docker
-        uses: docker/setup-docker@v2
-
       # Jalankan Docker Compose di EC2 melalui SSH
       - name: Deploy to EC2 using Docker Compose
         run: |
