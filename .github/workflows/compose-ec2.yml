@@ -27,7 +27,7 @@ jobs:
       # Jalankan Docker Compose di EC2 melalui SSH
       - name: Deploy to EC2 using Docker Compose
         run: |
-          ssh -v -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.27.186.65 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.27.186.65 << 'EOF'
             cd /home/ubuntu/githubaction-python
             docker compose -f up -d
           EOF
