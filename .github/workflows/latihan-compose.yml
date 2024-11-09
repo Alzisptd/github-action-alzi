@@ -32,4 +32,4 @@ jobs:
 
       # (Optional) Clean up and stop containers
       - name: Stop and remove containers
-        run: docker compose down
+        run: docker compose -f ./python/docker-compose.yml down
