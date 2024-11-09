@@ -24,7 +24,7 @@ jobs:
       # Build and run Docker Compose
       - name: Run Docker Compose
         run: |
-          docker-compose -f ./python/compose.yml up -d
+          docker compose -f ./python/compose.yml up -d
           
       # Check status of containers (optional)
       - name: List running containers
