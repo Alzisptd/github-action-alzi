@@ -29,5 +29,5 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.27.186.65 << 'EOF'
             cd /home/ubuntu/githubaction-python
-            docker compose -f ./compose.yml up -d
+            sudo docker compose -f ./compose.yml up -d
           EOF
