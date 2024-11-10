@@ -26,6 +26,12 @@ jobs:
       # Set up Docker
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+        
+      # Auto Git PULL
+      - name: Run Docker Compose
+        run: |
+          cd /workspaces/github-action-alzi
+          git pull
 
       # Build and run Docker Compose
       - name: Run Docker Compose
