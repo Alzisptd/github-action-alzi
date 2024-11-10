@@ -3,7 +3,10 @@ name: Deploy to EC2 using Docker Compose
 on:
   push:
     branches:
-      - main
+      - EC2  # Memicu workflow untuk perubahan apapun di branch EC2
+  pull_request:
+    branches:
+      - EC2
 
 jobs:
   deploy:
