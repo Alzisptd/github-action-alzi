@@ -6,6 +6,10 @@ on:
       - UAT  # Hanya memicu workflow jika ada perubahan di branch UAT
     paths:
       - '.github/workflows/latihan-compose.yml'  # Pastikan path ini sesuai dengan lokasi file yang kamu ubah
+  pull_request:
+    branches:
+      - UAT
+
 
 
 jobs:
