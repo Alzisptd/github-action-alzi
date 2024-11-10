@@ -3,9 +3,7 @@ name: Docker Compose CI
 on:
   push:
     branches:
-      - UAT  # Hanya memicu workflow jika ada perubahan di branch UAT
-    paths:
-      - '.github/workflows/latihan-compose.yml'  # Pastikan path ini sesuai dengan lokasi file yang kamu ubah
+      - UAT  # Memicu workflow untuk perubahan apapun di branch UAT
   pull_request:
     branches:
       - UAT
