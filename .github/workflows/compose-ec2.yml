@@ -23,7 +23,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 3.27.186.65 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 13.239.1.142 >> ~/.ssh/known_hosts
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
