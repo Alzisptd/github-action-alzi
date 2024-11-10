@@ -3,7 +3,9 @@ name: Docker Compose CI
 on:
   push:
     branches:
-      - main
+      - UAT
+    paths:
+      - 'path/to/latihan-compose.yml'
   pull_request:
     branches:
       - UAT
