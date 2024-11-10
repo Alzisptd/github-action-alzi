@@ -5,7 +5,7 @@ on:
     branches:
       - UAT  # Hanya memicu workflow jika ada perubahan di branch UAT
     paths:
-      - 'path/to/latihan-compose.yml'  # Pastikan path ini sesuai dengan lokasi file yang kamu ubah
+      - '.github/workflows/latihan-compose.yml'  # Pastikan path ini sesuai dengan lokasi file yang kamu ubah
 
 
 jobs:
