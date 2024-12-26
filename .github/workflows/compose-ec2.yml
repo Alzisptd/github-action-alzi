@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       # Checkout code dari GitHub
       - name: Checkout code
@@ -17,19 +17,23 @@ jobs:
       # Set up SSH key (dari GitHub Secrets)
       - name: Set up SSH key
         run: |
+          echo "Setting up SSH key"
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
+          # Cek isi file dan permissions untuk troubleshooting
+          ls -l ~/.ssh
+          cat ~/.ssh/id_rsa
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
       # Jalankan Docker Compose di EC2 melalui SSH
       - name: Deploy to EC2 using Docker Compose
         run: |
+          echo "Connecting to EC2 instance"
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@10.128.0.3 << 'EOF'
           echo 'Hallo'
+          cd /home/ubuntu/githubaction-python
+          sudo docker compose -f ./compose.yml up -d
           EOF
-      #      cd /home/ubuntu/githubaction-python
-      #      sudo docker compose -f ./compose.yml up -d
-             
