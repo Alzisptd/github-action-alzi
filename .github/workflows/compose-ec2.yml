@@ -3,7 +3,7 @@ name: Deploy to GCP using Docker Compose
 on:
   push:
     branches:
-      - main  # Menjalankan deploy pada push ke branch main
+      - main
 
 jobs:
   deploy:
@@ -22,16 +22,14 @@ jobs:
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
-      # Verifikasi apakah folder my-app ada
-      - name: Verify my-app folder exists
+      # Verifikasi apakah folder 'my-app' ada
+      - name: List files in the repo
         run: |
           echo "Listing files in the repo"
-          ls -la
-          echo "Listing contents of my-app"
-          ls -la ./my-app  # Memastikan apakah folder my-app ada di lokasi yang benar
+          ls -la /github/workspace
 
       # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r /github/workspace/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
