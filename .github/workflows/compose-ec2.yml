@@ -30,7 +30,7 @@ jobs:
       - name: Deploy to EC2 using Docker Compose
         run: |
           echo "Connecting to EC2 instance"
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@10.128.0.3 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@134.31.192.61 << 'EOF'
           echo 'Hallo'
           cd /home/ubuntu/githubaction-python
           sudo docker compose -f ./compose.yml up -d
