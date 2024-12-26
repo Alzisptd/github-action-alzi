@@ -24,7 +24,6 @@ jobs:
           ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
           # Cek isi file dan permissions untuk troubleshooting
           ls -l ~/.ssh
-          cat ~/.ssh/id_rsa
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
