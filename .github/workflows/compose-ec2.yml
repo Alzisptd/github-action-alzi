@@ -1,38 +1,15 @@
-name: Deploy to EC2 using Docker Compose
+- name: Set up SSH key
+  run: |
+    echo "Setting up SSH key"
+    set -x  # Menampilkan semua perintah yang dijalankan untuk debugging
+    mkdir -p ~/.ssh
+    ls -ld ~/.ssh
 
-on:
-  push:
-    branches:
-      - main
+    echo "${{ secrets.GCP_ALZI }}" > ~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
+    ls -l ~/.ssh
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Checkout code dari GitHub
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Set up SSH key (dari GitHub Secrets)
-      - name: Set up SSH key
-        run: |
-          echo "Setting up SSH key"
-          mkdir -p ~/.ssh
-          echo "${{ secrets.GCP_ALZI }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
-          # Cek isi file dan permissions untuk troubleshooting
-          ls -l ~/.ssh
-        env:
-          GCP_ALZI: ${{ secrets.GCP_ALZI }}
-
-      # Jalankan Docker Compose di EC2 melalui SSH
-      - name: Deploy to EC2 using Docker Compose
-        run: |
-          echo "Connecting to EC2 instance"
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@10.128.0.3 << 'EOF'
-          echo 'Hallo'
-          cd /home/ubuntu/githubaction-python
-          sudo docker compose -f ./compose.yml up -d
-          EOF
+    ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
+    ls -l ~/.ssh/known_hosts
+  env:
+    GCP_ALZI: ${{ secrets.GCP_ALZI }}
