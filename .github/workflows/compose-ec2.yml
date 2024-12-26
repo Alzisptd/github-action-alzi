@@ -24,4 +24,4 @@ jobs:
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
