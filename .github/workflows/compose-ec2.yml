@@ -20,14 +20,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 3.27.186.65 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
         env:
           EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
 
       # Jalankan Docker Compose di EC2 melalui SSH
       - name: Deploy to EC2 using Docker Compose
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.27.186.65 << 'EOF'
-            cd /home/ubuntu/githubaction-python
-            sudo docker compose -f ./compose.yml up -d
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@10.128.0.3 << 'EOF'
+      #      cd /home/ubuntu/githubaction-python
+      #      sudo docker compose -f ./compose.yml up -d
+             echo 'Hallo'
           EOF
