@@ -3,13 +3,14 @@ name: Deploy to GCP using Docker Compose
 on:
   push:
     branches:
-      - main
+      - main  # Menjalankan deploy pada push ke branch main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Set up SSH key
       - name: Set up SSH key
         run: |
           echo "Setting up SSH key"
@@ -21,6 +22,15 @@ jobs:
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
+      # Verifikasi apakah folder my-app ada
+      - name: Verify my-app folder exists
+        run: |
+          echo "Listing files in the repo"
+          ls -la
+          echo "Listing contents of my-app"
+          ls -la ./my-app  # Memastikan apakah folder my-app ada di lokasi yang benar
+
+      # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
