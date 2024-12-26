@@ -32,6 +32,7 @@ jobs:
           echo "Connecting to EC2 instance"
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
           echo 'Hallo'
-        #  cd /home/ubuntu/githubaction-python
-        #  sudo docker compose -f ./compose.yml up -d
           EOF
+#  cd /home/ubuntu/githubaction-python
+#  sudo docker compose -f ./compose.yml up -d
+          
