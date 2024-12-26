@@ -1,15 +1,27 @@
-- name: Set up SSH key
-  run: |
-    echo "Setting up SSH key"
-    set -x  # Menampilkan semua perintah yang dijalankan untuk debugging
-    mkdir -p ~/.ssh
-    ls -ld ~/.ssh
+name: Deploy to EC2 using Docker Compose
 
-    echo "${{ secrets.GCP_ALZI }}" > ~/.ssh/id_rsa
-    chmod 600 ~/.ssh/id_rsa
-    ls -l ~/.ssh
+on:
+  push:
+    branches:
+      - main
 
-    ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
-    ls -l ~/.ssh/known_hosts
-  env:
-    GCP_ALZI: ${{ secrets.GCP_ALZI }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up SSH key
+        run: |
+          echo "Setting up SSH key"
+          set -x  
+          mkdir -p ~/.ssh
+          ls -ld ~/.ssh
+
+          echo "${{ secrets.GCP_ALZI }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ls -l ~/.ssh
+
+          ssh-keyscan -H 10.128.0.3 >> ~/.ssh/known_hosts
+          ls -l ~/.ssh/known_hosts
+        env:
+          GCP_ALZI: ${{ secrets.GCP_ALZI }}
