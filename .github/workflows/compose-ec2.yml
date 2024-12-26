@@ -26,7 +26,7 @@ jobs:
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
-# Jalankan Docker Compose di EC2 melalui SSH
+# Jalankan Docker Compose di EC2 melalui SSH tes
       - name: Deploy to EC2 using Docker Compose
         run: |
           echo "Connecting to EC2 instance"
