@@ -26,7 +26,7 @@ jobs:
       - name: List files in the repo
         run: |
           echo "Listing files in the repo"
-          ls -la /github/workspace
+          ls -la /workspaces/github-action-alzi
 
       # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP
