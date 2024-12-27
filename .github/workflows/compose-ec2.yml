@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       # Set up SSH key
       - name: Set up SSH key
         run: |
@@ -26,10 +30,10 @@ jobs:
       - name: List files in the repo
         run: |
           echo "Listing files in the repo"
-          ls -la /workspaces/github-action-alzi
+          ls -la ${{ github.workspace }}
 
       # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r /workspaces/github-action-alzi/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
