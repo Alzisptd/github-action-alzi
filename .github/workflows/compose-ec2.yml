@@ -37,4 +37,3 @@ jobs:
           cd /home/aljisaptiadi/react-app
           docker build -t react-app .
           docker run --name react-app -d -p 3000:3000 react-app
-          curl 'http://localhost:3000'
