@@ -31,3 +31,5 @@ jobs:
         run: |
           echo "Connecting to GCP instance"
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
+          echo 'Hallo'
