@@ -26,12 +26,6 @@ jobs:
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
-      # Verifikasi apakah folder 'my-app' ada
-      - name: List files in the repo
-        run: |
-          echo "Listing files in the repo"
-          ls -la ${{ github.workspace }}
-
       # SCP file dari GitHub ke GCP v
       - name: Deploy to GCP using SCP
         run: |
