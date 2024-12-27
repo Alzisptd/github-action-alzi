@@ -32,7 +32,7 @@ jobs:
           echo "Listing files in the repo"
           ls -la ${{ github.workspace }}
 
-      # SCP file dari GitHub ke GCP
+      # SCP file dari GitHub ke GCP v
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
