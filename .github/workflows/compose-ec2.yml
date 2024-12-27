@@ -33,3 +33,8 @@ jobs:
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-js
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
           echo 'Hallo'
+          sudo su
+          cd /home/aljisaptiadi/react-app
+          docker build -t react-app .
+          docker run --name react-app -d -p 3000:3000 react-app
+          curl 'http://localhost:3000'
