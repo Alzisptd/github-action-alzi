@@ -34,7 +34,7 @@ const App = () => {
     
     useEffect(() => {
         
-        axios.get("https://quiz-api-rho.vercel.app/api/mobile-apps")
+        axios.get("http://34.31.192.61:5000/api/products")
         .then((res)=>{
             let data = res.data
             console.log(data)
@@ -107,14 +107,14 @@ const App = () => {
         if (currentId === -1) {
 
             //create data
-            axios.post('https://quiz-api-rho.vercel.app/api/mobile-apps', payload)
+            axios.post('http://34.31.192.61:5000/api/products', payload)
             .then((res) => {
             console.log(res)
             setFetchStatus(true)
             })
         }else{
             //update data
-            axios.put(`https://quiz-api-rho.vercel.app/api/mobile-apps/${currentId}`, payload)
+            axios.put(`http://34.31.192.61:5000/api/products/${currentId}`, payload)
             .then((res) => {
             console.log(res)
             setFetchStatus(true)
@@ -187,7 +187,7 @@ const App = () => {
 
       let idData = event.target.value
 
-      axios.delete(`https://quiz-api-rho.vercel.app/api/mobile-apps/${idData}`)
+      axios.delete(`http://34.31.192.61:5000/api/products/${idData}`)
       .then((res) => {
       setFetchStatus(true)
       })
@@ -199,7 +199,7 @@ const App = () => {
     
         setCurrentId(idData)
     
-        axios.get(`https://quiz-api-rho.vercel.app/api/mobile-apps/${idData}`)
+        axios.get(`http://34.31.192.61:5000/api/products/${idData}`)
           .then((res) => {
             let data = res.data
     

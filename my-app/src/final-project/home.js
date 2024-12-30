@@ -8,7 +8,7 @@ const Home = () => {
 
     useEffect(() => {
         
-        axios.get("https://quiz-api-rho.vercel.app/api/mobile-apps")
+        axios.get("http://34.31.192.61:5000/api/products")
         .then((res)=>{
             let data = res.data
             console.log(data)
