@@ -26,7 +26,7 @@ jobs:
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
-      # SCP file dari GitHub ke GCP v
+      # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
