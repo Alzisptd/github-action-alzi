@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import docs from "./docs/route";
 
 
-const PORT = 3000;
+const PORT = 5000;
 
 async function init() {
   try {
