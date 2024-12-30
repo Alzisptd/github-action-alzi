@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./quiz3-navbar/navbar"
-import Home from "./quiz3-home/home"
+import Home from "./final-project/home"
 import ManageData from "./quiz3-managedata/managedata";
 // import Tugas6 from './tugas6/tugas6'
 // import Tugas7 from './tugas7/tugas7'
