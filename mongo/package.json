@@ -38,6 +38,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/nodemailer": "^6.4.17",
     "tsconfig-paths": "^4.2.0",
