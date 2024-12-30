@@ -266,6 +266,7 @@ const App = () => {
                 <td className="py-3 px-6 text-center">{res.size}</td>
                 <td className="py-3 px-6 text-center">{res.is_android_app}</td>
                 <td className="py-3 px-6 text-center">{res.is_ios_app}</td>
+                <td className="py-3 px-6 text-center">
                 <button
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                     onClick={handleDelete}
@@ -280,6 +281,7 @@ const App = () => {
                   >
                     Edit
                 </button>
+                </td>
               </tr>
             ))}
           </tbody>
