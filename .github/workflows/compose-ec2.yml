@@ -35,5 +35,6 @@ jobs:
           echo 'Hallo'
           sudo su
           cd /home/aljisaptiadi/react-app
+          docker stop react-app;docker rm react-app;docker rmi react-app
           docker build -t react-app .
           docker run --name react-app -d -p 3000:3000 react-app
