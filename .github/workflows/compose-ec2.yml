@@ -31,10 +31,16 @@ jobs:
         run: |
           echo "Connecting to GCP instance"
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-app
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/mongo aljisaptiadi@34.31.192.61:/home/aljisaptiadi/node-app
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
-          echo 'Hallo'
+          echo 'Restart React'
           sudo su
           cd /home/aljisaptiadi/react-app
           docker stop react-app;docker rm react-app;docker rmi react-app
           docker build -t react-app .
           docker run --name react-app -d -p 3000:3000 react-app
+          echo 'Restart Nodejs'
+          cd /home/aljisaptiadi/node-app
+          docker stop node-app;docker rm node-app;docker rmi node-app
+          docker build -t node-app .
+          docker run --name node-app -d -p 5000:5000 node-app
