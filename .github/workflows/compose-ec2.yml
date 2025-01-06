@@ -22,7 +22,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.GCP_ALZI }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 34.31.192.61 >> ~/.ssh/known_hosts
+          ssh-keyscan -H 34.46.29.47 >> ~/.ssh/known_hosts
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
 
@@ -30,8 +30,8 @@ jobs:
       - name: Deploy to GCP using SCP
         run: |
           echo "Connecting to GCP instance"
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.31.192.61:/home/aljisaptiadi/react-app
-          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/mongo aljisaptiadi@34.31.192.61:/home/aljisaptiadi/node-app
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.46.29.47:/home/aljisaptiadi/react-app
+          scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/mongo aljisaptiadi@34.46.29.47:/home/aljisaptiadi/node-app
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
           echo 'Restart React'
           sudo su

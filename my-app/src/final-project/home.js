@@ -8,7 +8,7 @@ const Home = () => {
 
     useEffect(() => {
         
-        axios.get("http://34.31.192.61:5000/api/products")
+        axios.get("http://34.46.29.47:5000/api/products")
         .then((res)=>{
             let data = res.data
             console.log(data)

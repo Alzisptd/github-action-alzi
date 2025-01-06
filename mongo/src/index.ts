@@ -16,7 +16,7 @@ async function init() {
 
     // Konfigurasi CORS
     app.use(cors({
-      origin: 'http://34.31.192.61:3000', // URL frontend Anda
+      origin: ['http://34.46.29.47:3000', 'http://localhost:3000'], // URL frontend Anda
       methods: ['GET', 'POST', 'PUT', 'DELETE'], // Sesuaikan metode yang diizinkan
       allowedHeaders: ['Content-Type', 'Authorization'], // Header yang diperbolehkan
     }));
