@@ -102,10 +102,7 @@ export default {
       const result = await ProductsModel.findOne({
         _id: req.params.id,
       });
-      res.status(200).json({
-        data: result,
-        message: "Success get one product",
-      });
+      res.status(200).json(result);
     } catch (error) {
       const err = error as Error;
       res.status(500).json({
