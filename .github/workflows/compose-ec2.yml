@@ -32,7 +32,7 @@ jobs:
           echo "Connecting to GCP instance"
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/my-app aljisaptiadi@34.46.29.47:/home/aljisaptiadi/react-app
           scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ${{ github.workspace }}/mongo aljisaptiadi@34.46.29.47:/home/aljisaptiadi/node-app
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.31.192.61 << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa aljisaptiadi@34.46.29.47 << 'EOF'
           echo 'Restart React'
           sudo su
           cd /home/aljisaptiadi/react-app
