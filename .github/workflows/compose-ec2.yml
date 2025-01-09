@@ -25,6 +25,12 @@ jobs:
           ssh-keyscan -H 34.46.29.47 >> ~/.ssh/known_hosts
         env:
           GCP_ALZI: ${{ secrets.GCP_ALZI }}
+          
+      # Create .env file for React app
+      - name: Create React .env file
+        run: |
+          echo "Creating .env file for React app"
+          echo "REACT_APP_API_URL=http://34.46.29.47:5000/api" > my-app/.env
 
       # SCP file dari GitHub ke GCP
       - name: Deploy to GCP using SCP

@@ -8,7 +8,7 @@ const Home = () => {
 
     useEffect(() => {
         
-        axios.get("http://34.46.29.47:5000/api/products")
+        axios.get(`${process.env.REACT_APP_API_URL}/products`)
         .then((res)=>{
             let data = res.data
             console.log(data)

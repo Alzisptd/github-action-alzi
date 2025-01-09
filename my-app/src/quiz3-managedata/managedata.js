@@ -34,7 +34,7 @@ const App = () => {
     
     useEffect(() => {
         
-        axios.get("http://34.46.29.47:5000/api/products")
+        axios.get(`${process.env.REACT_APP_API_URL}/products`)
         .then((res)=>{
             let data = res.data
             console.log(data)
@@ -107,14 +107,14 @@ const App = () => {
         if (currentId === -1) {
 
             //create data
-            axios.post('http://34.46.29.47:5000/api/products', payload)
+            axios.post(`${process.env.REACT_APP_API_URL}/products`, payload)
             .then((res) => {
             console.log(res)
             setFetchStatus(true)
             })
         }else{
             //update data
-            axios.put(`http://34.46.29.47:5000/api/products/${currentId}`, payload)
+            axios.put(`${process.env.REACT_APP_API_URL}/products/${currentId}`, payload)
             .then((res) => {
             console.log(res)
             setFetchStatus(true)
@@ -187,7 +187,7 @@ const App = () => {
 
       let idData = event.target.value
 
-      axios.delete(`http://34.46.29.47:5000/api/products/${idData}`)
+      axios.delete(`${process.env.REACT_APP_API_URL}/products/${idData}`)
       .then((res) => {
       setFetchStatus(true)
       })
@@ -199,7 +199,7 @@ const App = () => {
     
         setCurrentId(idData)
     
-        axios.get(`http://34.46.29.47:5000/api/products/${idData}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products/${idData}`)
           .then((res) => {
             let data = res.data
     
